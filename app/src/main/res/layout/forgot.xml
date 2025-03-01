@@ -14,23 +14,38 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/ic_forgot_foreground" />
 
-    <TextView
-        android:id="@+id/forgot_desc"
-        android:layout_width="234dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:justificationMode="inter_word"
-        android:text="Don't worry, it happens! Simply enter your email, and
-we'll send you a link to reset your password"
-        android:textAppearance="@color/gray"
-        android:textSize="10sp"
+    <Button
+        android:id="@+id/ForgotButton"
+        android:layout_width="355dp"
+        android:layout_height="50sp"
+        android:backgroundTint="@color/AppBrown"
+        android:text="Confirm"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgot" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.853" />
+
+    <EditText
+        android:id="@+id/ForgotEmail"
+        android:layout_width="355dp"
+        android:layout_height="49dp"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:hint="Email"
+        android:autofillHints="emailAddress"
+        android:inputType="textEmailAddress"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.736" />
 
     <TextView
         android:id="@+id/forgot"
@@ -44,34 +59,33 @@ we'll send you a link to reset your password"
         app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.566" />
+        app:layout_constraintVertical_bias="0.541" />
 
-    <EditText
-        android:id="@+id/ForgotEmail"
-        android:layout_width="355dp"
-        android:layout_height="49dp"
-        android:drawableStart="@drawable/ic_email"
-        android:drawablePadding="8dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/forgot_desc"
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:justificationMode="inter_word"
+        android:text="Don't worry, it happens! Simply enter your email, and
+we'll send you a link to reset your password"
+        android:textAppearance="@color/gray"
+        android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.759" />
+        app:layout_constraintTop_toBottomOf="@+id/forgot" />
 
-    <Button
-        android:id="@+id/ForgotButton"
-        android:layout_width="355dp"
-        android:layout_height="50sp"
-        android:backgroundTint="@color/AppBrown"
-        android:text="Send"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.876" />
+    <TextView
+        android:id="@+id/ForgotError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/ForgotButton"
+        app:layout_constraintStart_toStartOf="@+id/ForgotButton"
+        app:layout_constraintTop_toBottomOf="@+id/ForgotButton"
+        tools:text="Error Message" />
 </androidx.constraintlayout.widget.ConstraintLayout>

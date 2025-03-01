@@ -49,4 +49,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation(libs.androidx.viewpager2)
+    implementation(libs.material)
 }

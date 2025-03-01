@@ -2,6 +2,7 @@ package com.example.test
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
@@ -27,6 +28,8 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var signupButton: Button
     private lateinit var errorMessageTextView: TextView
     private lateinit var backToLoginTextView: TextView
+    private lateinit var passShow: CheckBox
+    private lateinit var confirmpassShow: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +44,21 @@ class SignupActivity : AppCompatActivity() {
         signupButton = findViewById(R.id.SignupButton)
         errorMessageTextView = findViewById(R.id.SignupError)
         backToLoginTextView = findViewById(R.id.backToLogin)
+        passShow = findViewById(R.id.SignupShowPass)
+        confirmpassShow = findViewById(R.id.SignupShowConfirm)
+
+        //set password visibility functions
+        passShow.setOnCheckedChangeListener { _, isChecked ->
+            passShow(isChecked)
+        }
+
+        confirmpassShow.setOnCheckedChangeListener { _, isChecked ->
+            confirmpassShow(isChecked)
+        }
+
+        //set Password type
+        passwordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        confirmPasswordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
 
         // Set clickable "Log In" text
         setupLoginRedirect()
@@ -61,7 +79,7 @@ class SignupActivity : AppCompatActivity() {
         spannableString.setSpan(UnderlineSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                val intent = Intent(this@SignupActivity, MainActivity::class.java)
+                val intent = Intent(this@SignupActivity, Login::class.java)
                 startActivity(intent)
             }
         }
@@ -105,7 +123,7 @@ class SignupActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
                     if (response.isSuccessful) {
                         Toast.makeText(this@SignupActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@SignupActivity, MainActivity::class.java)
+                        val intent = Intent(this@SignupActivity, Login::class.java)
                         startActivity(intent)
                         finish()
                     } else {
@@ -118,4 +136,23 @@ class SignupActivity : AppCompatActivity() {
                 }
             })
     }
+    //SHOW PASSWORD FUNCTION
+    private fun passShow(show: Boolean) {
+        if (show) {
+            passwordEditText.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        } else {
+            passwordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+        passwordEditText.setSelection(passwordEditText.text.length)
+
+    }
+
+    private fun confirmpassShow(show: Boolean) {
+        if (show) {
+            confirmPasswordEditText.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        } else {
+            confirmPasswordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+        passwordEditText.setSelection(passwordEditText.text.length)
+        }
 }
