@@ -1,4 +1,4 @@
-    package com.example.test
+    package com.example.test.login_activities
 
     import android.content.Context
     import android.content.Intent
@@ -7,13 +7,13 @@
     import android.text.SpannableString
     import android.text.Spanned
 import android.text.InputType
-import android.view.MotionEvent
     import android.text.method.LinkMovementMethod
     import android.text.style.ClickableSpan
     import android.text.style.UnderlineSpan
     import android.view.View
     import android.widget.*
     import androidx.appcompat.app.AppCompatActivity
+    import com.example.test.R
     import com.example.test.models.ResponseModel
     import com.example.test.network.RetrofitClient
     import retrofit2.Call

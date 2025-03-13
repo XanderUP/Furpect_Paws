@@ -1,4 +1,4 @@
-package com.example.test
+package com.example.test.login_activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,7 @@ import android.util.Patterns
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.test.R
 import com.example.test.models.ResponseModel
 import com.example.test.network.RetrofitClient
 import retrofit2.Call
@@ -33,7 +34,7 @@ class SignupActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.signup)
+        setContentView(R.layout.login_signup)
 
         // Initialize UI elements
         nameEditText = findViewById(R.id.SignupName)

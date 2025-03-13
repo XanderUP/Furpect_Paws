@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -36,8 +37,10 @@ android {
 }
 
 dependencies {
+    
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.material.v1120) // Or latest version
+    implementation(libs.androidx.cardview)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -51,4 +54,5 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.androidx.viewpager2)
     implementation(libs.material)
+
 }
