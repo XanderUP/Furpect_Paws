@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    id("kotlin-kapt")
 }
 
 android {
@@ -40,6 +41,8 @@ dependencies {
     
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.material.v1120) // Or latest version
+    implementation(libs.glide)
+    kapt(libs.glide.compiler)
     implementation(libs.androidx.cardview)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.core.ktx)

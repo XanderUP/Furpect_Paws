@@ -29,8 +29,10 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var signupButton: Button
     private lateinit var errorMessageTextView: TextView
     private lateinit var backToLoginTextView: TextView
-    private lateinit var passShow: CheckBox
-    private lateinit var confirmpassShow: CheckBox
+    private lateinit var passShow: ImageView
+    private lateinit var confirmpassShow: ImageView
+    private var isPasswordVisible = false
+    private var isConfirmPasswordVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,18 +50,16 @@ class SignupActivity : AppCompatActivity() {
         passShow = findViewById(R.id.SignupShowPass)
         confirmpassShow = findViewById(R.id.SignupShowConfirm)
 
-        //set password visibility functions
-        passShow.setOnCheckedChangeListener { _, isChecked ->
-            passShow(isChecked)
+        // Set password visibility toggle buttons
+        passShow.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+            togglePasswordVisibility(passwordEditText, passShow, isPasswordVisible)
         }
 
-        confirmpassShow.setOnCheckedChangeListener { _, isChecked ->
-            confirmpassShow(isChecked)
+        confirmpassShow.setOnClickListener {
+            isConfirmPasswordVisible = !isConfirmPasswordVisible
+            togglePasswordVisibility(confirmPasswordEditText, confirmpassShow, isConfirmPasswordVisible)
         }
-
-        //set Password type
-        passwordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-        confirmPasswordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
 
         // Set clickable "Log In" text
         setupLoginRedirect()
@@ -68,6 +68,18 @@ class SignupActivity : AppCompatActivity() {
         signupButton.setOnClickListener {
             registerUser()
         }
+    }
+
+    // Function to toggle password visibility
+    private fun togglePasswordVisibility(editText: EditText, toggleIcon: ImageView, isVisible: Boolean) {
+        if (isVisible) {
+            editText.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            toggleIcon.setImageResource(R.drawable.ic_visibility) // Open eye icon
+        } else {
+            editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            toggleIcon.setImageResource(R.drawable.ic_visibility_off) // Closed eye icon
+        }
+        editText.setSelection(editText.text.length) // Keep cursor at the end
     }
 
     private fun setupLoginRedirect() {
@@ -137,23 +149,4 @@ class SignupActivity : AppCompatActivity() {
                 }
             })
     }
-    //SHOW PASSWORD FUNCTION
-    private fun passShow(show: Boolean) {
-        if (show) {
-            passwordEditText.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-        } else {
-            passwordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-        }
-        passwordEditText.setSelection(passwordEditText.text.length)
-
-    }
-
-    private fun confirmpassShow(show: Boolean) {
-        if (show) {
-            confirmPasswordEditText.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-        } else {
-            confirmPasswordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-        }
-        passwordEditText.setSelection(passwordEditText.text.length)
-        }
 }
