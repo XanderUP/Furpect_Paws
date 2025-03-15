@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ResetLogo"
+        android:layout_width="411dp"
+        android:layout_height="375dp"
+        android:contentDescription="Reset Password Logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044"
+        app:srcCompat="@mipmap/ic_forgot_foreground" />
+
+    <TextView
+        android:id="@+id/OTP_desc"
+        android:layout_width="349dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="8dp"
+        android:text="We’ve sent a one time password (OTP) to your registered email. Please enter the OTP below to complete your login."
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AccountConfirmation" />
+
+    <TextView
+        android:id="@+id/AccountConfirmation"
+        android:layout_width="362dp"
+        android:layout_height="100dp"
+        android:text="Account Confirmation"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.632"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.551" />
+
+    <LinearLayout
+        android:id="@+id/otp_input_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/OTP_desc">
+
+        <EditText
+            android:id="@+id/otp_digit1"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/otp_code"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/otp_digit2"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/otp_code"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/otp_digit3"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/otp_code"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/otp_digit4"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/otp_code"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/otp_digit5"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/otp_code"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/otp_digit6"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/otp_code"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/resend_otp_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Haven’t received the OTP yet? Resend OTP"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.887" />
+
+    <TextView
+        android:id="@+id/ResetError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/resend_otp_text"
+        app:layout_constraintStart_toStartOf="@+id/resend_otp_text"
+        app:layout_constraintTop_toBottomOf="@+id/resend_otp_text"
+        tools:text="Error Message" />
+</androidx.constraintlayout.widget.ConstraintLayout>

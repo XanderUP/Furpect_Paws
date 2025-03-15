@@ -108,4 +108,5 @@
     <color name="AppBrown">#d0a484</color>
     <color name="AppDash">#704c34</color>
     <color name="AppLightbrown">#d0a484</color>
+    <color name="backgroundColor">#F5F5F5</color>
 </resources>
