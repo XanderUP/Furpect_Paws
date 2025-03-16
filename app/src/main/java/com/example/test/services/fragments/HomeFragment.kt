@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.test.R
 import com.example.test.services.HomeAdapter
 import com.example.test.services.HomeItems
+import com.example.test.services.ServicesFragment
 
 class HomeFragment : Fragment() {
 
@@ -60,13 +61,10 @@ class HomeFragment : Fragment() {
             requireContext(),
             servicesList,
             onViewAllClick = { sectionTitle ->
-                val fragment = when (sectionTitle) {
-                    "GROOMING SERVICES" -> GroomingServicesFragment()
-                    "SPECIALIZED SERVICES" -> SpecializedServicesFragment()
-                    "SEASONAL SERVICES" -> SeasonalServicesFragment()
-                    "WELLNESS SERVICES" -> WellnessServicesFragment()
-                    "SENIOR SERVICES" -> SeniorServicesFragment()
-                    else -> GroomingServicesFragment() // Default fallback
+                val fragment = ServicesFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("serviceCategory", sectionTitle)
+                    }
                 }
 
                 parentFragmentManager.beginTransaction()
@@ -75,9 +73,21 @@ class HomeFragment : Fragment() {
                     .commit()
             },
             onItemClick = { service ->
-                // Handle item click if needed
+                val bundle = Bundle().apply {
+                    putString("serviceName", service.name)
+                    putInt("serviceImageRes", service.imageRes)
+                }
+
+                val bookingFragment = BookingsFragment()
+                bookingFragment.arguments = bundle
+
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, bookingFragment)
+                    .addToBackStack(null)
+                    .commit()
             }
         )
+
 
         recyclerView.adapter = homeAdapter
     }

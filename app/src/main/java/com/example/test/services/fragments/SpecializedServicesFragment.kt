@@ -27,9 +27,8 @@ class SpecializedServicesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = view.findViewById(R.id.recyclerViewSpecializedServices)
+        recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
         loadSpecializedServices()
     }
 
@@ -37,9 +36,16 @@ class SpecializedServicesFragment : Fragment() {
         specializedServicesList.clear()
 
         // Add specialized services dynamically
-        specializedServicesList.add(ServicesItems(R.drawable.special1, "Medicated Baths", "u i i a u"))
-        specializedServicesList.add(ServicesItems(R.drawable.special2, "Aromatherapy Baths", "a i a u"))
-
+        specializedServicesList.add(ServicesItems(R.drawable.special1, "Medicated Baths",
+            "For pets with skin conditions."))
+        specializedServicesList.add(ServicesItems(R.drawable.special2, "Aromatherapy Baths",
+            "Calming essential oils for relaxation."))
+        specializedServicesList.add(ServicesItems(R.drawable.special3, "Anal Gland Expression",
+            "Prevents discomfort and infections."))
+        specializedServicesList.add(ServicesItems(R.drawable.special4, "Hand Stripping",
+            "For wire-haired breeds to maintain coat texture."))
+        specializedServicesList.add(ServicesItems(R.drawable.special5, "Creative Grooming",
+            "Dyeing, nail polish, or unique styling."))
         servicesAdapter = ServicesAdapter(specializedServicesList) // ✅ Only pass the list
         recyclerView.adapter = servicesAdapter
     }

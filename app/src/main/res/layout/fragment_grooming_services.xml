@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <!-- ✅ RecyclerView (List of Specialized Services) -->
+    <!-- ✅ RecyclerView (List of Grooming Services) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
