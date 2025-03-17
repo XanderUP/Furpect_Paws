@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.test.R
-import com.example.test.services.fragments.BookingsFragment
+import com.example.test.services.fragments.MyBookingsFragment
 import com.example.test.services.fragments.HomeFragment
 import com.example.test.services.fragments.NotificationsFragment
 import com.example.test.services.fragments.ProfileFragment
@@ -34,7 +34,7 @@ class MainHome : AppCompatActivity() {
                     true
                 }
                 R.id.nav_bookings -> {
-                    replaceFragment(BookingsFragment()) // ❌ Hides Search Bar & RecyclerView
+                    replaceFragment(MyBookingsFragment()) // ❌ Hides Search Bar & RecyclerView
                     true
                 }
                 R.id.nav_notification -> {

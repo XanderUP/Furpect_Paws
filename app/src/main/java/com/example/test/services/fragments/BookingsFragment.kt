@@ -15,20 +15,38 @@ class BookingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_bookings, container, false)
+        // ✅ Use `services_fragment.xml` instead of `fragment_bookings.xml`
+        return inflater.inflate(R.layout.services_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // ✅ Retrieve service details from arguments
         val serviceName = arguments?.getString("serviceName") ?: "Service Name"
         val serviceImageRes = arguments?.getInt("serviceImageRes") ?: R.drawable.ic_placeholder
 
-        val serviceTitle: TextView = view.findViewById(R.id.bookingServiceTitle)
-        val serviceImage: ImageView = view.findViewById(R.id.bookingServiceImage)
+        // ✅ Set "serviceTitle" in `services_fragment.xml`
+        val serviceTitleTextView: TextView = view.findViewById(R.id.serviceTitle)
+        serviceTitleTextView.text = serviceName
 
-        serviceTitle.text = serviceName
-        serviceImage.setImageResource(serviceImageRes)
+        // ✅ Handle back button
+        val backButton = view.findViewById<ImageView>(R.id.backButton)
+        backButton.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
+        // ✅ Display the service image inside `serviceFragmentContainer` (optional)
+        val serviceImageView = ImageView(requireContext()).apply {
+            setImageResource(serviceImageRes)
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            scaleType = ImageView.ScaleType.CENTER_CROP
+        }
+
+        val container: ViewGroup = view.findViewById(R.id.serviceFragmentContainer)
+        container.addView(serviceImageView)
     }
 }
-
