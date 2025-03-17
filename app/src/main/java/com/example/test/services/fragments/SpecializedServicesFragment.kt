@@ -46,7 +46,25 @@ class SpecializedServicesFragment : Fragment() {
             "For wire-haired breeds to maintain coat texture."))
         specializedServicesList.add(ServicesItems(R.drawable.special5, "Creative Grooming",
             "Dyeing, nail polish, or unique styling."))
-        servicesAdapter = ServicesAdapter(specializedServicesList) // ✅ Only pass the list
+        // ✅ Pass click listener to adapter
+        servicesAdapter = ServicesAdapter(specializedServicesList) { service ->
+            openBookingScreen(service)
+        }
         recyclerView.adapter = servicesAdapter
+    }
+
+    private fun openBookingScreen(service: ServicesItems) {
+        val bundle = Bundle().apply {
+            putString("serviceName", service.title)
+            putInt("serviceImageRes", service.imageRes)
+        }
+
+        val bookingFragment = BookingsFragment()
+        bookingFragment.arguments = bundle
+
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, bookingFragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

@@ -34,7 +34,6 @@ class GroomingServicesFragment : Fragment() {
 
     private fun loadGroomingServices() {
         groomingServicesList.clear()
-
         // Add specialized services dynamically
         groomingServicesList.add(ServicesItems(R.drawable.grooming1, "Full Grooming Package",
             "A complete grooming service that includes a bath, haircut, nail trimming, and ear cleaning to keep your pet looking and feeling great."))
@@ -46,7 +45,25 @@ class GroomingServicesFragment : Fragment() {
             "Cleaning and inspection of the pet's ears to prevent infections and maintain ear health."))
         groomingServicesList.add(ServicesItems(R.drawable.grooming5, "Teeth Brushing",
             "Dental cleaning service to help maintain your pet's oral hygiene and freshen their breath."))
-        servicesAdapter = ServicesAdapter(groomingServicesList) // ✅ Only pass the list
+        // ✅ Pass click listener to adapter
+        servicesAdapter = ServicesAdapter(groomingServicesList) { service ->
+            openBookingScreen(service)
+        }
         recyclerView.adapter = servicesAdapter
+    }
+
+    private fun openBookingScreen(service: ServicesItems) {
+        val bundle = Bundle().apply {
+            putString("serviceName", service.title ?:"Unknown Service")
+            putInt("serviceImageRes", service.imageRes)
+        }
+
+        val bookingFragment = BookingsFragment()
+        bookingFragment.arguments = bundle
+
+        requireActivity().supportFragmentManager.beginTransaction() // ✅ Use `requireActivity()` instead
+            .replace(R.id.fragment_container, bookingFragment) // ✅ Ensure this ID exists in XML
+            .addToBackStack(null)
+            .commit()
     }
 }

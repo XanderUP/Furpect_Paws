@@ -40,7 +40,25 @@ class WellnessServicesFragment : Fragment() {
             "Guidance on pet nutrition and diet to ensure pets are healthy and well-fed."))
         wellnessServicesList.add(ServicesItems(R.drawable.wellness2, "Weight Management Programs",
             "Programs designed to help pets achieve and maintain a healthy weight through diet and exercise."))
-        servicesAdapter = ServicesAdapter(wellnessServicesList) // ✅ Only pass the list
+        // ✅ Pass click listener to adapter
+        servicesAdapter = ServicesAdapter(wellnessServicesList) { service ->
+            openBookingScreen(service)
+        }
         recyclerView.adapter = servicesAdapter
+    }
+
+    private fun openBookingScreen(service: ServicesItems) {
+        val bundle = Bundle().apply {
+            putString("serviceName", service.title)
+            putInt("serviceImageRes", service.imageRes)
+        }
+
+        val bookingFragment = BookingsFragment()
+        bookingFragment.arguments = bundle
+
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, bookingFragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

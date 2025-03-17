@@ -42,7 +42,25 @@ class SeasonalServicesFragment : Fragment() {
             "Services focused on keeping pets cool and comfortable during the hot summer months."))
         seasonalServicesList.add(ServicesItems(R.drawable.seasonal3, "Winter Grooming Specials",
             "Services to protect pets from cold weather, including paw pad treatments and warm grooming."))
-        servicesAdapter = ServicesAdapter(seasonalServicesList) // ✅ Only pass the list
+        // ✅ Pass click listener to adapter
+        servicesAdapter = ServicesAdapter(seasonalServicesList) { service ->
+            openBookingScreen(service)
+        }
         recyclerView.adapter = servicesAdapter
+    }
+
+    private fun openBookingScreen(service: ServicesItems) {
+        val bundle = Bundle().apply {
+            putString("serviceName", service.title)
+            putInt("serviceImageRes", service.imageRes)
+        }
+
+        val bookingFragment = BookingsFragment()
+        bookingFragment.arguments = bundle
+
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, bookingFragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

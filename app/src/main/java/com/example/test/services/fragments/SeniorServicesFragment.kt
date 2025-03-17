@@ -42,7 +42,25 @@ class SeniorServicesFragment : Fragment() {
             "Helps relieve arthritis pain."))
         seniorServicesList.add(ServicesItems(R.drawable.senior3, "Disability-Friendly Grooming",
             "Customized care for special-needs dogs."))
-        servicesAdapter = ServicesAdapter(seniorServicesList) // ✅ Only pass the list
+        // ✅ Pass click listener to adapter
+        servicesAdapter = ServicesAdapter(seniorServicesList) { service ->
+            openBookingScreen(service)
+        }
         recyclerView.adapter = servicesAdapter
+    }
+
+    private fun openBookingScreen(service: ServicesItems) {
+        val bundle = Bundle().apply {
+            putString("serviceName", service.title)
+            putInt("serviceImageRes", service.imageRes)
+        }
+
+        val bookingFragment = BookingsFragment()
+        bookingFragment.arguments = bundle
+
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, bookingFragment)
+            .addToBackStack(null)
+            .commit()
     }
 }
