@@ -65,7 +65,7 @@ class HomeAdapter(
         private val serviceName: TextView = itemView.findViewById(R.id.serviceName)
 
         fun bind(service: HomeItems, onItemClick: (HomeItems) -> Unit) {
-            serviceName.text = service.name
+            serviceName.text = service.title
             serviceImage.setImageResource(service.imageRes) // Load local drawable
 
             itemView.setOnClickListener {

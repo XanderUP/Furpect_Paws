@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class HomeItems(
-    val name: String,
+    val title: String,// ✅ Matches `serviceTitle` in `ServicesAdapter`
     val imageRes: Int,
+    val description: String  // ✅ Matches `serviceDescription`
 ) : Parcelable

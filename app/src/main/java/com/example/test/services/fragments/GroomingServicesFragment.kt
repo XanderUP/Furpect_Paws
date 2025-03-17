@@ -54,15 +54,16 @@ class GroomingServicesFragment : Fragment() {
 
     private fun openBookingScreen(service: ServicesItems) {
         val bundle = Bundle().apply {
-            putString("serviceName", service.title ?:"Unknown Service")
+            putString("serviceName", service.title)
             putInt("serviceImageRes", service.imageRes)
+            putString("serviceDescription", service.description)
         }
 
         val bookingFragment = BookingsFragment()
         bookingFragment.arguments = bundle
 
-        requireActivity().supportFragmentManager.beginTransaction() // ✅ Use `requireActivity()` instead
-            .replace(R.id.fragment_container, bookingFragment) // ✅ Ensure this ID exists in XML
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, bookingFragment)
             .addToBackStack(null)
             .commit()
     }

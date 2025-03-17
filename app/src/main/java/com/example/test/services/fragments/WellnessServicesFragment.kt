@@ -51,6 +51,7 @@ class WellnessServicesFragment : Fragment() {
         val bundle = Bundle().apply {
             putString("serviceName", service.title)
             putInt("serviceImageRes", service.imageRes)
+            putString("serviceDescription", service.description)
         }
 
         val bookingFragment = BookingsFragment()

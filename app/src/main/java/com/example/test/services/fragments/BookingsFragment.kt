@@ -15,38 +15,39 @@ class BookingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // ✅ Use `services_fragment.xml` instead of `fragment_bookings.xml`
+        // ✅ Use `services_fragment.xml` as the base layout
         return inflater.inflate(R.layout.services_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ✅ Retrieve service details from arguments
-        val serviceName = arguments?.getString("serviceName") ?: "Service Name"
-        val serviceImageRes = arguments?.getInt("serviceImageRes") ?: R.drawable.ic_placeholder
-
-        // ✅ Set "serviceTitle" in `services_fragment.xml`
-        val serviceTitleTextView: TextView = view.findViewById(R.id.serviceTitle)
-        serviceTitleTextView.text = serviceName
-
-        // ✅ Handle back button
+        // ✅ Handle back button click
         val backButton = view.findViewById<ImageView>(R.id.backButton)
         backButton.setOnClickListener {
             requireActivity().onBackPressed()
         }
 
-        // ✅ Display the service image inside `serviceFragmentContainer` (optional)
-        val serviceImageView = ImageView(requireContext()).apply {
-            setImageResource(serviceImageRes)
-            layoutParams = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
-            scaleType = ImageView.ScaleType.CENTER_CROP
+        // ✅ Set service title to "My Bookings"
+        val serviceTitle: TextView = view.findViewById(R.id.serviceTitle)
+        serviceTitle.text = "My Bookings"
+
+        // ✅ Retrieve service details from arguments
+        val serviceName = arguments?.getString("serviceName") ?: "Service Name"
+        val serviceImageRes = arguments?.getInt("serviceImageRes") ?: R.drawable.ic_placeholder
+        val serviceDesc = arguments?.getString("serviceDescription") ?: "No description available."
+
+        // ✅ Load `fragment_bookings.xml` inside `serviceFragmentContainer`
+        val bookingsViewFragment = BookingsViewFragment().apply {
+            arguments = Bundle().apply {
+                putString("serviceName", serviceName)
+                putInt("serviceImageRes", serviceImageRes)
+                putString("serviceDescription", serviceDesc)
+            }
         }
 
-        val container: ViewGroup = view.findViewById(R.id.serviceFragmentContainer)
-        container.addView(serviceImageView)
+        childFragmentManager.beginTransaction()
+            .replace(R.id.serviceFragmentContainer, bookingsViewFragment)
+            .commit()
     }
 }
