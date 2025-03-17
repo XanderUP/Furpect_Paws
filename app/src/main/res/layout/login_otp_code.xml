@@ -19,37 +19,49 @@
         app:srcCompat="@mipmap/ic_forgot_foreground" />
 
     <TextView
-        android:id="@+id/OTP_desc"
-        android:layout_width="349dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:text="We’ve sent a one time password (OTP) to your registered email. Please enter the OTP below to complete your login."
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AccountConfirmation" />
-
-    <TextView
         android:id="@+id/AccountConfirmation"
         android:layout_width="362dp"
-        android:layout_height="100dp"
-        android:text="Account Confirmation"
+        android:layout_height="60dp"
+        android:text="Confirmation Code"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.632"
+        app:layout_constraintHorizontal_bias="0.673"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551" />
+        app:layout_constraintVertical_bias="0.514" />
+
+    <TextView
+        android:id="@+id/resend_otp_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Haven’t received the OTP yet? Resend OTP"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.938" />
+
+    <TextView
+        android:id="@+id/OTP_desc"
+        android:layout_width="349dp"
+        android:layout_height="39dp"
+        android:text="We’ve sent a one time password (OTP) to your registered email. Please enter the OTP below to change your password."
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AccountConfirmation" />
 
     <LinearLayout
         android:id="@+id/otp_input_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/OTP_desc">
 
@@ -115,27 +127,30 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/resend_otp_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Haven’t received the OTP yet? Resend OTP"
+    <Button
+        android:id="@+id/ConfirmButton"
+        android:layout_width="300dp"
+        android:layout_height="50sp"
+        android:backgroundTint="@color/AppBrown"
+        android:text="Confirm"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.887" />
+        app:layout_constraintVertical_bias="0.807" />
 
     <TextView
-        android:id="@+id/ResetError"
+        android:id="@+id/otpError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/red"
         android:textSize="17sp"
         android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/resend_otp_text"
-        app:layout_constraintStart_toStartOf="@+id/resend_otp_text"
-        app:layout_constraintTop_toBottomOf="@+id/resend_otp_text"
+        app:layout_constraintEnd_toEndOf="@+id/otp_input_layout"
+        app:layout_constraintStart_toStartOf="@+id/otp_input_layout"
+        app:layout_constraintTop_toBottomOf="@+id/otp_input_layout"
         tools:text="Error Message" />
 </androidx.constraintlayout.widget.ConstraintLayout>

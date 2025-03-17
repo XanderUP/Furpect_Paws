@@ -37,7 +37,7 @@ class Forgot : AppCompatActivity() {
                     .matches() -> showError("Invalid email format")
                 else -> {
                     errorMessageTextView.visibility = View.GONE // Hide error message
-                    val intent = Intent(this@Forgot, OTP::class.java)
+                    val intent = Intent(this@Forgot, OTPcode::class.java)
                     startActivity(intent)
                     finish()
                 }
