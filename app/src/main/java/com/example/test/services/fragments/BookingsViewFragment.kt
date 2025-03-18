@@ -15,7 +15,7 @@ class BookingsViewFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_bookings, container, false)
+        return inflater.inflate(R.layout.fragment_bookings_services, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

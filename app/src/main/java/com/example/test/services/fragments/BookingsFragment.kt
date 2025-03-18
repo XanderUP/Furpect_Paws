@@ -36,6 +36,9 @@ class BookingsFragment : Fragment() {
         val serviceName = arguments?.getString("serviceName") ?: "Service Name"
         val serviceImageRes = arguments?.getInt("serviceImageRes") ?: R.drawable.ic_placeholder
         val serviceDesc = arguments?.getString("serviceDescription") ?: "No description available."
+        val duration = arguments?.getString("duration") ?: "1 hour"
+        val priceRange = arguments?.getString("priceRange") ?: "₱2,500 - ₱3,500"
+
 
         // ✅ Load `fragment_bookings.xml` inside `serviceFragmentContainer`
         val bookingsViewFragment = BookingsViewFragment().apply {
@@ -46,8 +49,18 @@ class BookingsFragment : Fragment() {
             }
         }
 
+        // ✅ Load `fragment_bookings_details.xml` in `detailsFragmentContainer`
+        val bookingsDetailsFragment = BookingsDetailsFragment().apply {
+            arguments = Bundle().apply {
+                putString("duration", duration)
+                putString("priceRange", priceRange)
+            }
+        }
+
+        // ✅ Commit both fragments in the same transaction to preserve order
         childFragmentManager.beginTransaction()
             .replace(R.id.serviceFragmentContainer, bookingsViewFragment)
+            .replace(R.id.detailsFragmentContainer, bookingsDetailsFragment)
             .commit()
     }
 }

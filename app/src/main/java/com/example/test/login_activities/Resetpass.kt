@@ -33,7 +33,7 @@ class Resetpass : AppCompatActivity() {
             val pass = passEditText.text.toString().trim()
             val confirmPassword = confirmEditText.text.toString().trim()
             when {
-                pass.isEmpty() -> showError("Phone number is required")
+                pass.isEmpty() -> showError("This field is required")
                 pass.length < 4 -> showError("Password must contain at least 4 characters")
                 pass != confirmPassword -> showError("Passwords do not match")
                 else -> {

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    android:background="@drawable/rounded_card">
+
+    <!-- Duration Label -->
+    <TextView
+        android:id="@+id/durationLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#B98D6A"
+        android:text="Duration:"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Duration Value -->
+    <TextView
+        android:id="@+id/durationValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 hour"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/durationLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Price Range Label -->
+    <TextView
+        android:id="@+id/priceRangeLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#B98D6A"
+        android:text="Price Range:"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/durationValue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Price Range Value -->
+    <TextView
+        android:id="@+id/priceRangeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₱2,500 - ₱3,500"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:background="@drawable/rounded_background"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/priceRangeLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Select Pet Label -->
+    <TextView
+        android:id="@+id/selectPetLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#B98D6A"
+        android:text="Select Pet"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/priceRangeValue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Pet Selection Group -->
+    <LinearLayout
+        android:id="@+id/petSelectionGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/selectPetLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/catButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cats"
+            android:background="@drawable/rounded_button"
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/doggoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doggo"
+            android:background="@drawable/rounded_button"
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/doggoSelectedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doggo"
+            android:background="@drawable/rounded_button_selected"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <!-- Book Now Button -->
+    <Button
+        android:id="@+id/bookNowButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BOOK NOW"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:background="@color/AppBrown"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/petSelectionGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

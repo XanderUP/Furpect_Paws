@@ -57,10 +57,14 @@ class GroomingServicesFragment : Fragment() {
             putString("serviceName", service.title)
             putInt("serviceImageRes", service.imageRes)
             putString("serviceDescription", service.description)
+            putString("duration", "1 hour")
+            putString("priceRange", "₱2,500 - ₱3,500")
         }
 
         val bookingFragment = BookingsFragment()
         bookingFragment.arguments = bundle
+
+        recyclerView.visibility = View.GONE
 
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, bookingFragment)

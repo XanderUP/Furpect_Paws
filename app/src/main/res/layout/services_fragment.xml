@@ -33,10 +33,25 @@
     </LinearLayout>
 
     <!-- ✅ FrameLayout to Load Correct Service Fragment -->
-    <FrameLayout
-        android:id="@+id/serviceFragmentContainer"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <!-- Container for fragment_bookings_services -->
+        <FrameLayout
+            android:id="@+id/serviceFragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Container for fragment_bookings_details (Directly below services) -->
+        <FrameLayout
+            android:id="@+id/detailsFragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
 
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
