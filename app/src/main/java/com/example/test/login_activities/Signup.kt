@@ -19,7 +19,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SignupActivity : AppCompatActivity() {
+class Signup : AppCompatActivity() {
 
     private lateinit var nameEditText: EditText
     private lateinit var emailEditText: EditText
@@ -92,7 +92,7 @@ class SignupActivity : AppCompatActivity() {
         spannableString.setSpan(UnderlineSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                val intent = Intent(this@SignupActivity, Login::class.java)
+                val intent = Intent(this@Signup, Login::class.java)
                 startActivity(intent)
             }
         }
@@ -135,8 +135,8 @@ class SignupActivity : AppCompatActivity() {
             .enqueue(object : Callback<ResponseModel> {
                 override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
                     if (response.isSuccessful) {
-                        Toast.makeText(this@SignupActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@SignupActivity, Login::class.java)
+                        Toast.makeText(this@Signup, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@Signup, Login::class.java)
                         startActivity(intent)
                         finish()
                     } else {

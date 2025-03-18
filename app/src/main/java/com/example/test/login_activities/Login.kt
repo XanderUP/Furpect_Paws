@@ -6,7 +6,7 @@
     import android.os.Bundle
     import android.text.SpannableString
     import android.text.Spanned
-import android.text.InputType
+    import android.text.InputType
     import android.text.method.LinkMovementMethod
     import android.text.style.ClickableSpan
     import android.text.style.UnderlineSpan
@@ -79,7 +79,7 @@ import android.text.InputType
 
             val clickableSpanSignup = object : ClickableSpan() {
                 override fun onClick(widget: View) {
-                    startActivity(Intent(this@Login, SignupActivity::class.java))
+                    startActivity(Intent(this@Login, Signup::class.java))
                 }
             }
 

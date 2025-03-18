@@ -11,3 +11,8 @@ data class User(
     val full_name: String,
     val email: String
 )
+
+data class OTPResponse(
+    val success: Boolean,
+    val message: String
+)

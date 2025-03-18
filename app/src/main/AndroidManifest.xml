@@ -17,12 +17,12 @@
         tools:targetApi="33"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".login_activities.SignupActivity" android:exported="false" />
+        <activity android:name=".login_activities.Signup" android:exported="false" />
         <activity android:name=".login_activities.Forgot" android:exported="false" />
         <activity android:name=".login_activities.Login" android:exported="false" />
         <activity android:name=".login_activities.Welcome" android:exported="false"/>
-        <activity android:name=".login_activities.Resetpass" android:exported="false"/>
-        <activity android:name=".login_activities.OTPcode" android:exported="false"/>
+        <activity android:name=".login_activities.Resetpassword" android:exported="false"/>
+        <activity android:name=".login_activities.OTP" android:exported="false"/>
         <activity android:name="com.example.test.services.MainHome"/>
 
         <activity android:name=".MainActivity"
